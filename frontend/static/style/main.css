@@ -26,12 +26,12 @@ a {
 }
 
 .container {
-  height: 94vh;
+  height: 100vh;
   display: flex;
 }
 
 #sidebar {
-  background-color: #CAD2D3;
+  background-color: #cad2d3;
   width: 400px;
   height: 100%;
 }
@@ -43,7 +43,7 @@ a {
 #search-area {
   display: flex;
   flex-direction: row;
-  border: 5px solid #CAD2D3;
+  border: 5px solid #cad2d3;
 }
 
 #search-area input,
@@ -80,7 +80,7 @@ a {
 
 #results-area {
   padding: 10px;
-  height: 88%;
+  height: 80%;
 }
 
 #results-area h5 {
@@ -146,17 +146,15 @@ img {
   color: #282828;
 }
 
-.content {
+#content {
   flex: 1;
-}
-
-.topbar {
-  height: 5%;
-  display: none;
+  border-top: 5px solid #cad2d3;
+  border-right: 5px solid #cad2d3;
+  border-bottom: 5px solid #cad2d3;
 }
 
 #map {
-  background-color: tan;
+  background-color: #cad2d3;
   height: 100%;
 }
 
@@ -209,7 +207,9 @@ input.mobile-search {
   .container {
     flex-direction: column
   }
-
+  #content {
+    border: none;
+  }
   #sidebar {
     width: 100%;
     height: auto;
