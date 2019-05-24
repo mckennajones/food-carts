@@ -11,6 +11,11 @@ i {
 
 a {
   text-decoration: none;
+  color: #aaa;
+}
+
+.checked {
+  color: orange;
 }
 
 .header {

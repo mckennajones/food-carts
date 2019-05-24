@@ -1,6 +1,4 @@
 let React = require('react');
-let request = require('superagent');
-let Intro = require('./Intro');
 let Vendor = require('./Vendor');
 
 import { addPopupToMap } from './../app';
@@ -24,7 +22,6 @@ class Sidebar extends React.Component {
       popup.remove();
     });
 
-    let results = []
     let query = this.state.query;
     fetch('https://h4uvbgvx4k.execute-api.us-west-2.amazonaws.com/dev/search?q=' + query).then(function (response) {
       return response.json();
@@ -46,7 +43,8 @@ class Sidebar extends React.Component {
           "properties": {
             "name": c.name,
             "address": c.address,
-            "url": c.url
+            "url": c.url,
+            "rating": c.rating
           },
           "geometry": {
             "type": "Point",
@@ -58,7 +56,7 @@ class Sidebar extends React.Component {
     }
   };
 
-  plotOnMap = (vendor) => {
+  plotOnMap = () => {
     let map = this.props.map;
     let results = this.state.results;
 
@@ -67,7 +65,9 @@ class Sidebar extends React.Component {
         name: c.name,
         address: c.address,
         longitude: c.longitude,
-        latitude: c.latitude
+        latitude: c.latitude,
+        url: c.url,
+        rating: c.rating
       }
     }));
 
@@ -84,7 +84,7 @@ class Sidebar extends React.Component {
         "interactive": true,
         "source": "carts",
         "paint": {
-          'circle-radius': 4,
+          'circle-radius': 5,
           'circle-color': '#072844'
         },
       });
@@ -135,7 +135,7 @@ class Sidebar extends React.Component {
           "interactive": true,
           "source": "carts-highlight",
           "paint": {
-            'circle-radius': 4,
+            'circle-radius': 5,
             'circle-color': '#FAD8DE'
           },
         });
@@ -143,7 +143,7 @@ class Sidebar extends React.Component {
     }
   };
 
-  selectVendor = (vendorName) => {
+  selectVendor = () => {
     let map = this.props.map;
     let vendorMarker = map.getSource('carts-highlight')._data.features[0];
 

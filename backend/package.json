@@ -1,8 +1,8 @@
 {
-  "name": "aws-fetch-file-and-store-in-s3",
-  "description": "Fetch an image from remote source (URL) and then upload the image to a S3 bucket.",
+  "name": "fetch-yelp-and-food-carts-api",
+  "description": "Fetch yelp data and serve through api.",
   "version": "1.0.0",
-  "author": "Bozhao Yu",
+  "author": "Spike Madden",
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.7.9",

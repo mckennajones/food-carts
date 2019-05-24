@@ -53,6 +53,7 @@ app.get('/search', (req, res) => {
                     "address": results[i].location.address1,
                     "latitude": results[i].coordinates.latitude,
                     "longitude": results[i].coordinates.longitude,
+                    "rating": results[i].rating,
                     "url": results[i].url
                 };
                 r.push(cart);

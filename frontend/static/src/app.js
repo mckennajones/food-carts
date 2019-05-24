@@ -28,12 +28,24 @@ map.addControl(new mapboxgl.GeolocateControl({
 
 
 function format_html_marker (props) {
-  let { name, address } = props;
+  let { name, address, rating, url } = props;
   let html = '<div class="marker-title">' + name + '</div>' +
         '<h4>Address</h4>' +
-        '<span>' + address + '</span>';
+        '<span>' + address + '</span>' +
+        '<h4>Rating</h4>' +
+        convertRatingToHTML(rating) +
+        '<h4>More Information</h4>' +
+        '<span>' + '<a href="' + url + '">Website</a>' + '</span>';
 
   return html;
+}
+
+function convertRatingToHTML(rating) {
+  let html = '';
+  for (let i = 1; i <= 5; i++) {
+    html += i <= rating ? '<span class="fa fa-star checked"></span>' : '<span class="fa fa-star"></span>'
+  }
+  return html
 }
 
 export function addPopupToMap (feature) {

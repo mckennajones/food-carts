@@ -13,7 +13,7 @@ class Vendor extends React.Component {
         </div>
         <div className="row">
           <img src='assets/information.svg'></img>
-          <div className="content"><a href={r.url} target='yelp'>more information</a></div>
+          <div className="content"><a href={r.url} target='yelp'>Website</a></div>
         </div>
       </li>
     );
