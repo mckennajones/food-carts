@@ -9,5 +9,8 @@
     "express": "^4.16.4",
     "serverless-http": "^1.9.1",
     "yelp-fusion": "^2.2.1"
+  },
+  "devDependencies": {
+    "serverless-offline": "^4.10.6"
   }
 }

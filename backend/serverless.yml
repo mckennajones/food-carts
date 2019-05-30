@@ -10,6 +10,9 @@ service: food-carts
 custom:
   bucket: yelp-food-carts
 
+plugins:
+  - serverless-offline
+  
 # The `provider` block defines where your service will be deployed
 provider:
   name: aws
