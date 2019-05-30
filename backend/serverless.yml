@@ -7,12 +7,9 @@
 # The `service` block is the name of the service
 service: food-carts
 
-custom:
-  bucket: yelp-food-carts
-
 plugins:
   - serverless-offline
-  
+
 # The `provider` block defines where your service will be deployed
 provider:
   name: aws
@@ -20,25 +17,15 @@ provider:
   stage: dev
   region: us-west-2
   profile: serverless
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - s3:PutObject
-        - s3:GetObject
-      Resource: "arn:aws:s3:::${self:custom.bucket}/*"
 
 # The `functions` block defines what code to deploy
 functions:
   yelp:
     handler: yelp.save
-    environment:
-      BUCKET: ${self:custom.bucket}
     events:
       - schedule: rate(1 day)
   api:
     handler: api.handler
-    environment:
-      BUCKET: ${self:custom.bucket}
     events:
       - http:
           path: /

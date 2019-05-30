@@ -2,35 +2,20 @@
 
 const express = require('express');
 const serverless = require('serverless-http');
+const fetch = require("node-fetch");
 const app = express();
-const AWS = require('aws-sdk');
-const s3 = new AWS.S3();
-
-const params = {
-    Bucket: process.env.BUCKET,
-    Key: 'food-carts',
-};
 
 let carts = [];
 
-app.get('/', (req, res) => {
-    s3.getObject(params, (err, data) => {
-        if (err) console.log(err);
-        carts = JSON.parse(data.Body);
-        res.set({
-            'Access-Control-Allow-Origin': '*'
-        });
-        res.send(JSON.stringify(carts));
-    });
-});
-
 app.get('/search', (req, res) => {
-    s3.getObject(params, (err, data) => {
-        if (err) console.log(err);
-        carts = JSON.parse(data.Body);
+    fetch('https://dbkcceakc93e7.cloudfront.net/food-carts.json').then(function (response) {
+        return response.json();
+    }).then((json) => {
+        carts = json;
         res.set({
-            'Access-Control-Allow-Origin': '*'
+            'Access-Control-Allow-Origin': '*',
         });
+        
         let search_term = req.query.q;
         let results = carts;
         if (search_term) {
